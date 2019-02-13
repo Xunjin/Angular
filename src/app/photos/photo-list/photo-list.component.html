@@ -1,6 +1,12 @@
-<app-photo 
-    *ngFor="let photo of photos"
-    [url]="photo.url"
-    [description]="photo.description">
-</app-photo>
+<h1>Photos</h1>
+<ap-search
+    (Typing)="filter = $event" [value]="filter">
+</ap-search>
+
+<ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+
+<ap-load-button
+    (click)="load()"
+    [hasMore]="hasMore">
+</ap-load-button>
 
